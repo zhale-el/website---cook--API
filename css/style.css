@@ -216,6 +216,23 @@ body {
   animation: fade 300ms var(--transition-timing-function) forwards;
 }
 
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+main {
+  flex-grow: 1;
+}
+
+:focus-visible {
+  outline-color: var(--primary);
+}
+
 /*-----------------------------------*\
   #TYPOGRAPHY
 \*-----------------------------------*/
