@@ -80,13 +80,58 @@
   --header-height: 64px;
   --mobile-nav-height: 80px;
   --section-gap: 32px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    /**
+    *Transition
+    */
+    --transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+    --transition-short: 200ms var(--transition-timing-function);
+    --transition-medium: 500ms var(--transition-timing-function);
+  }
+}
 
-  /**
-  *Transition
- */
-  --transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
-  --transition-short: 200ms var(--transition-timing-function);
-  --transition-medium: 500ms var(--transition-timing-function);
+[data-theme="Light"] {
+  color-scheme: Light;
+
+  --background: var(--light-background);
+  --on-background: var(--light-on-background);
+  --on-background-varian: var(--light-on-background-varian);
+  --primary: var(--light-primary);
+  --primary-hover: var(--light-primary-hover);
+  --primary-container: var(--light-primary-container);
+  --error: var(--light-error);
+  --active-indicator: var(---light-active-indicator);
+  --image-background: var(--light-image-background);
+  ---badge-btn: var(--light-badge-btn);
+  ---on-badge-btn: var(--light-on-badge-btn);
+  --outline: var(--light-outline);
+  --input-outline: var(--light-input-outline);
+  --input-outline-hover: var(--light-input-outline-hover);
+  --alpha-10: var(--light-alpha-10);
+  ---alpha-20: var(--light-alpha-20);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background: var(--dark-background);
+  --on-background: var(--dark-on-background);
+  --on-background-varian: var(--dark-on-background-varian);
+  --primary: var(--dark-primary);
+  --primary-hover: var(--dark-primary-hover);
+  --primary-container: var(--dark-primary-container);
+  --error: var(--dark-error);
+  --active-indicator: var(---dark-active-indicator);
+  --image-background: var(--dark-image-background);
+  ---badge-btn: var(--dark-badge-btn);
+  ---on-badge-btn: var(--dark-on-badge-btn);
+  --outline: var(--dark-outline);
+  --input-outline: var(--dark-input-outline);
+  --input-outline-hover: var(--dark-input-outline-hover);
+  --alpha-10: var(--dark-alpha-10);
+  ---alpha-20: var(--dark-alpha-20);
 }
 /*-----------------------------------*\
   #RESET
