@@ -51,5 +51,51 @@
     <script src="./js/global.js" type="module"></script>
     <script src="./js/home.js" type="module"></script>
   </head>
-  <body></body>
+  <body>
+    <!--
+      Header
+    -->
+    <header class="header" data-header>
+      <a href="/" class="logo">
+        <img src="./image/logo-light.svg" alt="cook.io" class="logo-light" />
+        <img src="./image/logo-dark.svg" alt="cook.io" class="logo-darkt" />
+      </a>
+      <!-- nav-->
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li>
+            <a href="/" class="nabar-link title_small has-state active">Home</a>
+          </li>
+
+          <li>
+            <a href="/recipes.html" class="nabar-link title_small has-state"
+              >Recipes</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <!-- button-->
+      <button
+        class="icon-btn theme-switch has-state"
+        aria-pressed="false"
+        aria-label="Toggle light and dark theme"
+        data-theme-btn
+      >
+        <span class="material-symbols-outlined light-icon" aria-hidden="true"
+          >light_mode</span
+        >
+        <span class="material-symbols-outlined dark-icon" aria-hidden="true"
+          >dark_mode</span
+        >
+      </button>
+
+      <!-- icone save-->
+      <a href="./saved-recipes.html" class="btn btn-primary">
+        <span class="material-symbols-outlined" aria-hidden="true">book</span>
+      </a>
+
+      <sapn class="span">Saved Recipes</sapn>
+    </header>
+  </body>
 </html>
