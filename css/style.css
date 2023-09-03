@@ -95,6 +95,7 @@
   --mobile-nav-height: 80px;
   --section-gap: 32px;
 }
+
 @media (prefers-reduced-motion: no-preference) {
   :root {
     /**
@@ -211,7 +212,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding-block: calc(var(--header-height)+16px) var(--mobile-nav-height);
+  padding-block: calc(var(--header-height) + 16px) var(--mobile-nav-height);
   opacity: 0;
   animation: fade 300ms var(--transition-timing-function) forwards;
 }
@@ -236,6 +237,68 @@ main {
 /*-----------------------------------*\
   #TYPOGRAPHY
 \*-----------------------------------*/
+
+.diplay_large {
+  font-family: var(--font-primary);
+  font-size: var(--fs-display-large);
+  font-weight: var(--weight-regular);
+  line-height: 32px;
+  letter-spacing: -0.25px;
+}
+.diplay_medium {
+  font-size: var(--fs-display-medium);
+  line-height: 36px;
+}
+.diplay_small {
+  font-family: var(--font-primary);
+  font-size: var(--weight-regular);
+  font-weight: var(--weight-regular);
+  line-height: 32px;
+}
+.headline_small {
+  font-size: var(--fs-headline-small);
+  font-weight: var(--weight-regular);
+  line-height: 32px;
+}
+.title_medium {
+  font-size: var(--fs-title-medium);
+  font-weight: var(--weight-regular);
+  line-height: 24px;
+  letter-spacing: 0.15px;
+}
+.title_small {
+  font-size: var(--fs-title-small);
+  font-weight: var(--weight-medium);
+  line-height: 20px;
+  letter-spacing: 0.1px;
+}
+.body_large {
+  font-size: var(--fs-body-large);
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+.body_medium {
+  font-size: var(--fs-body-medium);
+  line-height: 20px;
+}
+.label_large {
+  font-size: var(--fs-label-large);
+  font-weight: var(--weight-medium);
+  line-height: 20px;
+  letter-spacing: 0.1px;
+}
+.label_medium {
+  font-size: var(--fs-label-medium);
+  font-weight: var(--weight-medium);
+  line-height: 16px;
+  letter-spacing: 0.5px;
+}
+.label_small {
+  font-size: var(--fs-label-small);
+  font-weight: var(--weight-medium);
+  line-height: 16px;
+  letter-spacing: 0.5 px;
+}
 
 /*-----------------------------------*\
   #REUSED STYLE
