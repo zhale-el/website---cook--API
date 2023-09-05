@@ -303,6 +303,28 @@ main {
 /*-----------------------------------*\
   #REUSED STYLE
 \*-----------------------------------*/
+.has-state {
+  position: relative;
+  overflow: hidden;
+}
+
+.has-state::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transition: var(--transition-short);
+}
+
+.has-state:where(:hover, :focus):not(:active)::after {
+  background-color: var(--alpha-10);
+}
+.material-symbols-outlined {
+  display: block;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
 
 /*-----------------------------------*\
   #COMPONENTS
@@ -323,10 +345,29 @@ main {
 /**
  * Icon Button
  */
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background-color: var(--primary-container);
+  border-radius: var(--radius-circle);
+}
 
 /**
  * Button
  */
+.btn {
+  height: 40px;
+  max-width: max-content;
+  padding-inline: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--radius-4);
+  transition: var(--transition-short);
+}
 
 /* primary button */
 
