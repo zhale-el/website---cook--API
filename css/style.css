@@ -369,9 +369,27 @@ main {
   transition: var(--transition-short);
 }
 
+.btn .material-symbols-outlined {
+  font-size: 1.8rem;
+}
+.btn.has-icon {
+  padding-inline-start: 16px;
+}
+
 /* primary button */
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.btn-primary:where(:hover, :focus-visible):not(:active) {
+  background-color: var(--primary-hover);
+}
 
 /* Secondary button */
+.btn-secondary {
+  background-color: var(--primary-container);
+}
 
 /* Badge button */
 
@@ -400,7 +418,33 @@ main {
 /*-----------------------------------*\
   #HEADER
 \*-----------------------------------*/
+.navbar,
+.header .btn-primary {
+  display: none;
+}
 
+.header {
+  background-color: var(--background);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-inline: 16px;
+  border-block-end: 1px solid var(--outline);
+  z-index: 4;
+}
+.theme-switch {
+  margin-inline-start: auto;
+}
+
+[data-theme="Light"] :where(.logo-dark, .theme-switch .light-icon),
+[data-theme="dark"] :where(.logo-light, .theme-switch .dark-icon) {
+  display: none;
+}
 /*-----------------------------------*\
   #HERO
 \*-----------------------------------*/
