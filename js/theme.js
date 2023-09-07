@@ -1,39 +1,58 @@
 "use strict";
 
-/**{NodeElement} */
-const $HTML = document.documentElement;
+//    < ------------------------------ start change theme -------------------->
 
-/**{Boolean} */
-const isDark = window.matchMedia("(prefers-color-scheme:dark)").matches;
+const /**{NodeElement} */ $HTML = document.documentElement;
 
-/** sessionStorage getItem */
+const /**{Boolean} */ isDark = window.matchMedia(
+    "(prefers-color-scheme:dark)"
+  ).matches;
+
+// sessionStorage getItem
 if (sessionStorage.getItem("theme")) {
   $HTML.dataset.theme = sessionStorage.getItem("theme");
 } else {
-  /* first time* */
+  // first time
   $HTML.dataset.theme = isDark ? "dark" : "Light";
 }
 
-/**{Boolean} */
-let isPressed = false;
-
-/*changeTheme function* */
+/**
+ * ChangeTheme function
+ */
 const changeTheme = function () {
   isPressed = isPressed ? false : true;
   this.setAttribute("aria-pressed", isPressed);
 
+  setDataThemeAttbr();
+  saveDataThemeInStorage();
+};
+
+/**
+ * Set data theme attribute
+ *
+ */
+let /**{Boolean} */ isPressed = false;
+
+const setDataThemeAttbr = function () {
   $HTML.setAttribute(
     "data-theme",
     $HTML.dataset.theme === "Light" ? "dark" : "Light"
   );
+};
 
-  //sessionStorage setItem
+/**
+ * Save data theme in  session storage
+ *
+ */
+const saveDataThemeInStorage = function () {
   sessionStorage.setItem("theme", $HTML.dataset.theme);
 };
 
 window.addEventListener("load", function () {
-  /*{NodeElement}* */
-  const themeBtn = document.querySelector("[data-theme-btn]");
+  const /*{NodeElement}* */ themeBtn =
+      document.querySelector("[data-theme-btn]");
 
   themeBtn.addEventListener("click", changeTheme);
 });
+
+//    < ------------------------------ End change theme -------------------->
