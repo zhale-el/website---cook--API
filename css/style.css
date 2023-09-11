@@ -353,6 +353,9 @@ main {
   height: 100%;
   object-fit: cover;
 }
+.section-title {
+  margin-block-end: 12px;
+}
 
 /*-----------------------------------*\
   #COMPONENTS
@@ -464,6 +467,36 @@ main {
   overflow-y: hidden;
   transition: var(--transition-short);
 }
+.card-link:where(:hover, :focus-visible) {
+  color: var(--primary);
+}
+.card-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.card :where(.meta-wrapper, .meta-item) {
+  display: flex;
+  align-items: center;
+}
+.card .meta-wrapper {
+  justify-content: space-between;
+}
+.card .meta-item {
+  gap: 8px;
+}
+.card .meta-item .material-symbols-outlined {
+  font-size: 1.8rem;
+}
+.saved .bookmark-add,
+.removed .bookmark {
+  display: none;
+}
+.saved .bookmark {
+  font-variation-settings: "FILL" 1;
+}
+
 /**
  * Icon Button
  */
@@ -514,7 +547,16 @@ main {
 }
 
 /* Badge button */
-
+.badge-btn {
+  height: 40px;
+  border-radius: var(--radius-pill);
+  background-color: var(---badge-btn);
+  color: var(---on-badge-btn);
+  max-width: max-content;
+  padding-inline: 16px;
+  display: grid;
+  place-items: center;
+}
 /*Filter button */
 
 /**
@@ -683,19 +725,91 @@ main {
 .tab-panel[hidden] {
   display: none;
 }
+.tab .btn-secondary {
+  max-width: 100%;
+  margin-block-start: 12px;
+}
 
 /*-----------------------------------*\
   #RECIPE SLIDER
 \*-----------------------------------*/
+.slider {
+  --gap: 8px;
+  position: relative;
+  overflow-x: auto;
+  scroll-snap-type: inline mandatory;
+  padding-block-end: 5px;
+}
+.slider::-webkit-scrollbar {
+  height: 4px;
+}
+.slider::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+.slider:where(:hover, :focus-within)::-webkit-scrollbar-thumb {
+  background-color: var(--alpha-10);
+}
+.slider-wrapper {
+  display: flex;
+  align-items: stretch;
+  gap: var(--gap);
+  transition: var(--transition-medium);
+}
+.slider-item {
+  min-width: calc(50% - 4px);
+  scroll-snap-align: start;
+}
+.load-more-card {
+  height: 100%;
+  background-color: var(--primary-container);
+  border-radius: var(--radius-4);
+  border: 1px solid var(--outline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
 
 /*-----------------------------------*\
   #TAG
 \*-----------------------------------*/
-
+.tag {
+  text-align: center;
+}
+.tag .section-text {
+  max-width: 50ch;
+  margin-inline: auto;
+}
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-block-start: 24px;
+}
 /*-----------------------------------*\
   #FOOTER
 \*-----------------------------------*/
 
+.footer .logo {
+  display: none;
+}
+.footer {
+  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: 12px;
+  border-block-start: 1px solid var(--outline);
+}
+.copyright {
+  opacity: 0.8;
+}
+.footer .edamam img {
+  width: 180px;
+}
 /*-----------------------------------*\
   #FILTER BAR
 \*-----------------------------------*/
