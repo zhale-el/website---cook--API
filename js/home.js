@@ -105,6 +105,10 @@ const addTabContent = ($currentTabBtn, $currentTabPanel) => {
           recipe: { image, label: title, totalTime: cookingTime, uri },
         } = data.hits[i];
 
+        const /**{String} */ recipeId = uri.slice(uri.lastIndexOf("_") + 1);
+        const /**{Undefined || String } */ isSaved =
+            window.localStorage.getItem(`cooke-recipe${recipeId}`);
+
         const /**{NodeElement} */ $card = document.createElement("div");
         $card.classList.add("card");
         $card.style.animationDelay = `${100 * i}ms`;
@@ -123,7 +127,7 @@ const addTabContent = ($currentTabBtn, $currentTabPanel) => {
 
       <div class="card-body">
         <h3 class="title_small">
-          <a href="./detail.html" class="card-link"
+          <a href="./detail.html?recipe=${recipeId}" class="card-link"
             >${title ?? "Untitled"}</a
           >
         </h3>
@@ -139,9 +143,9 @@ const addTabContent = ($currentTabBtn, $currentTabPanel) => {
           </div>
 
           <button
-            class="icon-btn has-state removed"
+            class="icon-btn has-state ${isSaved ? "saved" : "removed"}"
             aria-label="Add to saved recipes"
-          >
+            onclick="saveRecipe(this,'${recipeId}')">
             <span
               class="material-symbols-outlined bookmark-add"
               aria-hidden="true"
