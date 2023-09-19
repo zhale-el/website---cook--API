@@ -571,11 +571,79 @@ main {
 /**
  * Input
  */
+.input-outlined {
+  position: relative;
+  box-shadow: inset 0 0 0 1px var(--input-outline);
+  border-radius: var(--radius-4);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  transition: var(--transition-short);
+}
+.input-outlined:hover {
+  box-shadow: inset 0 0 0 1px var(--input-outline-hover);
+}
+.input-outlined:has(:focus, input:not(:placeholder-shown)) {
+  box-shadow: inset 0 0 0 2px var(--primary);
+}
+.input-field {
+  height: 56px;
+  padding-inline: 16px;
+  outline: none;
+}
 
+.input-field::placeholder {
+  opacity: 0;
+  transition: var(--transition-short);
+}
+.input-field:focus::placeholder {
+  opacity: 1;
+}
+.input-outlined .label {
+  position: absolute;
+  left: 16px;
+  opacity: 0.75;
+  background-color: var(--background);
+  padding-inline: 4px;
+  margin-inline: -4px;
+  pointer-events: none;
+  transition: var(--transition-short);
+}
+.input-outlined:has(:focus, input:not(:placeholder-shown)) .label {
+  color: var(--primary);
+  transform: translateY(-27px) scale(0.75);
+  transform-origin: left center;
+  opacity: 1;
+}
 /**
  * Filter chip
  */
 
+.filter-chip {
+  height: 32px;
+  background-color: var(--background);
+  border: 1px solid var(--outline);
+  border-radius: var(--radius-8);
+  display: grid;
+  place-items: center;
+  padding-inline: 16px;
+  user-select: none;
+  cursor: pointer;
+}
+.filter-chip .checkbox {
+  appearance: none;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  opacity: 0;
+}
+.filter-chip:has(:focus-visible) {
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+.filter-chip:has(:checked) {
+  background-color: var(---badge-btn);
+  border-color: var(---badge-btn);
+}
 /**
  * Badge
  */
@@ -847,13 +915,32 @@ main {
 .footer .edamam img {
   width: 180px;
 }
-/*-----------------------------------*\
-  #FILTER BAR
-\*-----------------------------------*/
 
 /*-----------------------------------*\
   #RECIPE PAGE
 \*-----------------------------------*/
+
+/* Filter bar */
+.filter-bar {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  background-color: var(--background);
+  max-width: 400px;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  visibility: hidden;
+  transition: var(--transition-short);
+  z-index: 6;
+}
+.filter-bar.active {
+  visibility: visible;
+  transform: translateX(-400px);
+  transition: var(--transition-medium);
+}
 
 /*-----------------------------------*\
   #DETAIL PAGE
