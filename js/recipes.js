@@ -27,9 +27,8 @@ const initAccordion = function ($element) {
   let isExpanded = false;
 
   $button.addEventListener("click", function () {
-    console.log("button");
     isExpanded = isExpanded ? false : true;
-    this.setAttribute("aria-expa nded", isExpanded);
+    this.setAttribute("aria-expanded", isExpanded);
   });
 };
 
@@ -54,4 +53,37 @@ addEventOnElements($filterTogglers, "click", function () {
   const bodyOverflow = document.body.style.overflow;
 
   document.body.overflow = bodyOverflow === "hidden" ? "visible" : "hidden";
+});
+
+/**
+ * Filter submit and clear
+ */
+const /**{NodeElement} */ $filterSubmit = document.querySelector(
+    "[data-filter-submit]"
+  );
+const /**{NodeElement} */ $filterClear = document.querySelector(
+    "[ data-filter-clear]"
+  );
+const /**{NodeElement} */ $filterSearch = $filterBar.querySelector(
+    'input[type="search"]'
+  );
+
+$filterSubmit.addEventListener("click", function () {
+  const /**{NodeList} */ $filterCheckboxes =
+      $filterBar.querySelectorAll("input:checked");
+
+  const /**{Array} */ queries = [];
+
+  if ($filterSearch.value) queries.push(["q", $filterSearch.value]);
+
+  if ($filterCheckboxes.length) {
+    for (const $checkbox of $filterCheckboxes) {
+      const /**{Strimg} */ key =
+          $checkbox.parentElement.parentElement.dataset.filter;
+      queries.push([key, $checkbox.value]);
+    }
+  }
+  window.location = queries.length
+    ? `?${queries.join("&").replace(/,/g, "=")}`
+    : "/recipes.html";
 });
