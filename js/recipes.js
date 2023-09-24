@@ -115,7 +115,7 @@ if (queries.length) {
   $filterCount.style.display = "none";
 }
 queryStr &&
-  queryStr.split("&").mapz((i) => {
+  queryStr.split("&").map((i) => {
     if (i.split("=")[0] === "q") {
       $filterBar.querySelector("input[type='search']").value = i
         .split("=")[1]
@@ -126,3 +126,114 @@ queryStr &&
       ).checked = true;
     }
   });
+
+const /**{NodeElement} */ $filterBtn =
+    document.querySelector("[data-filter-btn]");
+
+window.addEventListener("scroll", (e) => {
+  $filterBtn.classList[window.scrollY >= 120 ? "add" : "remove"]("active");
+});
+
+const /**{NodeElement} */ $gridList =
+    document.querySelector("[data-grid-list]");
+const /**{NodeElement} */ $loadMore =
+    document.querySelector("[data-load-more]");
+
+const /**{Array} */ defaultQueries = [
+    ["mealType", "breakfast"],
+    ["mealType", "dinner"],
+    ["mealType", "lunch"],
+    ["mealType", "snack"],
+    ["mealType", "teatime"],
+    ...cardQueries,
+  ];
+
+$gridList.innerHTML = $skeletonCard.repeat(20);
+let /**{string} */ nextPageUrl = "";
+
+const renderRecipe = (data) => {
+  data.hits.map((item, index) => {
+    const {
+      recipe: { image, label: title, totalTime: cookingTime, uri },
+    } = item;
+
+    const /**{String} */ recipeId = uri.slice(uri.lastIndexOf("_") + 1);
+    const /**{Undefined || String } */ isSaved = window.localStorage.getItem(
+        `cooke-recipe${recipeId}`
+      );
+
+    const /**{NodeLement} */ $card = document.createElement("div");
+    $card.classList.add("card");
+    $card.style.animationDelay = `${100 * index}ms`;
+
+    $card.innerHTML = `
+    <figure class="card-media img-holder">
+    <img
+      src="${image}"
+      alt="${title}"
+      width="195"
+      height="195"
+      class="img-cover"
+      loading="lazy"
+    />
+  </figure>
+
+  <div class="card-body">
+    <h3 class="title_small">
+      <a href="./detail.html?recipe=${recipeId}" class="card-link"
+        >${title ?? "Untitled"}</a
+      >
+    </h3>
+    <div class="meta-wrapper">
+      <div class="meta-item">
+        <span class="material-symbols-outlined" aria-hidden="true"
+          >schedule</span
+        >
+
+        <span class="label_medium">${getTime(cookingTime).time || "<1"}${
+      getTime(cookingTime).timeUnit
+    }</span>
+      </div>
+
+      <button
+        class="icon-btn has-state ${isSaved ? "saved" : "removed"}"
+        aria-label="Add to saved recipes"
+        onclick="saveRecipe(this,'${recipeId}')">
+        <span
+          class="material-symbols-outlined bookmark-add"
+          aria-hidden="true"
+          >bookmark_add</span
+        >
+        <span
+          class="material-symbols-outlined bookmark"
+          aria-hidden="true"
+          >bookmark</span
+        >
+      </button>
+    </div>
+  </div>
+    
+    
+    
+    `;
+    $gridList.appendChild($card);
+  });
+};
+
+let /**{Boolean} */ requestedBefore = true;
+
+fetchData(queries || defaultQueries, (data) => {
+  const {
+    _links: { next },
+  } = data;
+  nextPageUrl = next?.href;
+  $gridList.innerHTML = "";
+  requestedBefore = false;
+
+  if (data.hits.length) {
+    renderRecipe(data);
+  } else {
+    $loadMore.innerHTML = `  <p class="body_medium info-text">No recipe found
+    </p>`;
+  }
+});
