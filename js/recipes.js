@@ -101,6 +101,7 @@ $filterClear.addEventListener("click", function () {
 });
 
 const /**{String} */ queryStr = window.location.search.slice(1);
+
 const /**{Array} */ queries =
     queryStr && queryStr.split("&").map((i) => i.split("="));
 
@@ -235,5 +236,41 @@ fetchData(queries || defaultQueries, (data) => {
   } else {
     $loadMore.innerHTML = `  <p class="body_medium info-text">No recipe found
     </p>`;
+  }
+});
+
+const /**{Number} */ CONTAINER_MAX_WIDTH = 1200;
+const /**{Number} */ CONTAINER_MAX_CARD = 6;
+
+window.addEventListener("scroll", async (e) => {
+  if (
+    $loadMore.getBoundingClientRect().top < window.innerHeight &&
+    !requestedBefore &&
+    nextPageUrl
+  ) {
+    $loadMore.innerHTML = $skeletonCard.repeat(
+      Math.round(
+        ($loadMore.clientWidth / CONTAINER_MAX_WIDTH) * CONTAINER_MAX_CARD
+      )
+    );
+
+    requestedBefore = true;
+
+    const /**{Promise} */ response = await fetch(nextPageUrl);
+    const /**{Object} */ data = await response.json();
+
+    const {
+      _links: { next },
+    } = data;
+    nextPageUrl = next?.href;
+
+    renderRecipe(data);
+    $loadMore.innerHTML = "";
+    requestedBefore = false;
+  }
+
+  if (!nextPageUrl) {
+    $loadMore.innerHTML = `<p class="body_medium info-text">No more recipes
+  </p>`;
   }
 });
