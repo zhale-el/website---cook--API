@@ -337,7 +337,7 @@ main {
 }
 .grid-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 12px 8px;
 }
 .img-holder {
@@ -559,8 +559,8 @@ main {
 .badge-btn {
   height: 40px;
   border-radius: var(--radius-pill);
-  background-color: var(---badge-btn);
-  color: var(---on-badge-btn);
+  background-color: var(--badge-btn);
+  color: var(--on-badge-btn);
   max-width: max-content;
   padding-inline: 16px;
   display: grid;
@@ -1203,3 +1203,75 @@ main {
 /*-----------------------------------*\
   #MEDIA QUEIES
 \*-----------------------------------*/
+
+/*
+*responsive for larger than 600px screen
+*/
+@media (min-width: 600px) {
+  /*Custom property*/
+
+  :root {
+    /*
+    Typography
+    */
+
+    /* font size*/
+    --fs-display-large: 3.6rem;
+    --fs-display-medium: 3.6rem;
+    --fs-display-small: 3rem;
+  }
+
+  /*
+   Reused style
+    */
+  .container {
+    padding-inline: 32px;
+  }
+  .grid-list {
+    grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
+  }
+  .section-title {
+    margin-block-end: 24px;
+  }
+  .snackbar-container {
+    right: auto;
+    bottom: 32px;
+    left: 32px;
+    max-width: 360px;
+    width: 100%;
+  }
+
+  /*
+  * Typography
+  */
+  .display_large,
+  .display_medium {
+    line-height: 44px;
+  }
+  .display_small {
+    line-height: 36px;
+  }
+  .title_small {
+    font-size: 1.6rem;
+    font-weight: var(--weight-medium);
+    line-height: 24px;
+    letter-spacing: 0.15px;
+  }
+
+  /*
+  * Hero
+  */
+  .banner-card {
+    background-image: url("../image/hero-banner-medium.jpg");
+  }
+  .search-field {
+    height: 72px;
+  }
+
+  .search-wrapper .search-submit {
+    width: 100px;
+  }
+  .hero .search-wrapper {
+    margin-block: 24px 16px;
+  }
+}
