@@ -197,7 +197,7 @@ const renderRecipe = (data) => {
       </div>
 
       <button
-        class="icon-btn has-state ${isSaved ? "saved" : "removed"}"
+        class='icon-btn has-state ${isSaved ? "saved" : "removed"}'
         aria-label="Add to saved recipes"
         onclick="saveRecipe(this,'${recipeId}')">
         <span

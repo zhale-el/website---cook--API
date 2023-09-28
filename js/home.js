@@ -107,7 +107,7 @@ const addTabContent = ($currentTabBtn, $currentTabPanel) => {
 
         const /**{String} */ recipeId = uri.slice(uri.lastIndexOf("_") + 1);
         const /**{Undefined || String } */ isSaved =
-            window.localStorage.getItem(`cooke-recipe${recipeId}`);
+            window.localStorage.getItem(`cookio-recipe${recipeId}`);
 
         const /**{NodeElement} */ $card = document.createElement("div");
         $card.classList.add("card");
@@ -143,7 +143,7 @@ const addTabContent = ($currentTabBtn, $currentTabPanel) => {
           </div>
 
           <button
-            class="icon-btn has-state ${isSaved ? "saved" : "removed"}"
+            class='icon-btn has-state ${isSaved ? "saved" : "removed"}'
             aria-label="Add to saved recipes"
             onclick="saveRecipe(this,'${recipeId}')">
             <span

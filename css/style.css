@@ -498,7 +498,7 @@ main {
 .card .meta-item .material-symbols-outlined {
   font-size: 1.8rem;
 }
-.saved .bookmark_add,
+.saved .bookmark-add,
 .removed .bookmark {
   display: none;
 }
@@ -1194,7 +1194,12 @@ main {
 /*-----------------------------------*\
   #SAVED RECIPE PAGE
 \*-----------------------------------*/
-
+.saved-recipe-page {
+  padding-block-end: 24px;
+}
+.saved-recipe-page .section-title {
+  line-height: 40px;
+}
 /*-----------------------------------*\
   #MEDIA QUEIES
 \*-----------------------------------*/

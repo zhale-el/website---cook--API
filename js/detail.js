@@ -92,7 +92,7 @@ fetchData(null, (data) => {
       isSaved ? "saved" : "removed"
     }' onclick="saveRecipe(this,'${recipeId}')">
       <span
-        class="material-symbols-outlined bookmark_add"
+        class="material-symbols-outlined bookmark-add"
         aria-hidden="true"
         >bookmark_add</span
       >
