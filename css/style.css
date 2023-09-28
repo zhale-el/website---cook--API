@@ -119,13 +119,13 @@
   --error: var(--light-error);
   --active-indicator: var(--light-active-indicator);
   --image-background: var(--light-image-background);
-  ---badge-btn: var(--light-badge-btn);
-  ---on-badge-btn: var(--light-on-badge-btn);
+  --badge-btn: var(--light-badge-btn);
+  --on-badge-btn: var(--light-on-badge-btn);
   --outline: var(--light-outline);
   --input-outline: var(--light-input-outline);
   --input-outline-hover: var(--light-input-outline-hover);
   --alpha-10: var(--light-alpha-10);
-  ---alpha-20: var(--light-alpha-20);
+  --alpha-20: var(--light-alpha-20);
 }
 
 [data-theme="dark"] {
@@ -140,13 +140,13 @@
   --error: var(--dark-error);
   --active-indicator: var(--dark-active-indicator);
   --image-background: var(--dark-image-background);
-  ---badge-btn: var(--dark-badge-btn);
-  ---on-badge-btn: var(--dark-on-badge-btn);
+  --badge-btn: var(--dark-badge-btn);
+  --on-badge-btn: var(--dark-on-badge-btn);
   --outline: var(--dark-outline);
   --input-outline: var(--dark-input-outline);
   --input-outline-hover: var(--dark-input-outline-hover);
   --alpha-10: var(--dark-alpha-10);
-  ---alpha-20: var(--dark-alpha-20);
+  --alpha-20: var(--dark-alpha-20);
 }
 /*-----------------------------------*\
   #RESET
@@ -251,7 +251,7 @@ main {
 }
 .display_small {
   font-family: var(--font-primary);
-  font-size: var(--weight-regular);
+  font-size: var(--fs-display-small);
   font-weight: var(--weight-regular);
   line-height: 32px;
 }
@@ -648,8 +648,8 @@ main {
   box-shadow: inset 0 0 0 1px var(--primary);
 }
 .filter-chip:has(:checked) {
-  background-color: var(---badge-btn);
-  border-color: var(---badge-btn);
+  background-color: var(--badge-btn);
+  border-color: var(--badge-btn);
 }
 /**
  * Badge

@@ -23,7 +23,6 @@ export const fetchData = async function (queries, successCallback) {
   const /**{String} */ url = `${ACCESS_POINT}?app_id=${APP_ID}&app_key=${APP_KEY}&type=${TYPE}${
       query ? `&${query}` : ""
     }`;
-  console.log(url);
 
   const /**{object} */ response = await fetch(url);
 
