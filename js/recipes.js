@@ -101,6 +101,7 @@ $filterClear.addEventListener("click", function () {
 });
 
 const /**{String} */ queryStr = window.location.search.slice(1);
+console.log(queryStr);
 
 const /**{Array} */ queries =
     queryStr && queryStr.split("&").map((i) => i.split("="));
@@ -123,7 +124,7 @@ queryStr &&
         .replace(/%20/g, " ");
     } else {
       $filterBar.querySelector(
-        `[value=${i.split("=")[1].replace(/%20/g, " ")}]`
+        `[value='${i.split("=")[1].replace(/%20/g, " ")}']`
       ).checked = true;
     }
   });
