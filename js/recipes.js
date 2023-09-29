@@ -101,7 +101,6 @@ $filterClear.addEventListener("click", function () {
 });
 
 const /**{String} */ queryStr = window.location.search.slice(1);
-console.log(queryStr);
 
 const /**{Array} */ queries =
     queryStr && queryStr.split("&").map((i) => i.split("="));
